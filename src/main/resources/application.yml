@@ -1,0 +1,50 @@
+#端口
+server:
+  port: 8088
+
+#使用配置文件中的值
+myserver:
+  port: ${server.port}
+
+#简单类型
+name: zhangsan
+
+#对象类型
+student:
+  sex: male
+  age: 20
+  address: beijing
+
+student2: {sex: female,age: 20,address: shanghai}
+
+
+#集合
+citys:
+  - beijing
+  - shanghai
+  - nanjing
+
+citys2: [beijing,shanghai,nanjing]
+
+#集合 元素对象类型
+students:
+  - name: lisi
+    age: 20
+    address: beijing
+  - name: wangwu
+    age: 25
+    address: shanghai
+
+users:
+  id: 10001
+  username: lisi
+  address:
+    - beijing
+    - shanghai
+    - chongqing
+  grades:
+    - subject: math
+      score: 100
+    - subject: english
+      score: 90
+
