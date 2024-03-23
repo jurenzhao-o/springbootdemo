@@ -61,4 +61,36 @@ public class MyController {
     public String yml3(){
         return myport;
     }
+
+    //随机生成一个uuid,没短杠
+    @Value("${random.value}")
+    private String randomvalue;
+    //随机生成一个uuid,有短杠
+    @Value("${random.uuid}")
+    private String uuid;
+    //随机取整数范围内的一个值
+    @Value("${random.int}")
+    private int num;
+    //随机10以内的数
+    @Value("${random.int(10)}")
+    private int number;
+
+    //随机100到200范围内的数
+    @Value("${random.int(100,200)}")
+    private int rangenum;
+
+    //随机取长整型范围内的值
+    @Value("${random.long}")
+    private long longnum;
+    //随机取长整型1000-20000范围内的值
+    @Value("${random.long(1000,2000)}")
+    private long rangelongnum;
+
+    @RequestMapping("/yml4")
+    @ResponseBody
+    public String yml4(){
+        return "randomvalue:"+randomvalue+" uuid:"+uuid+" num:"+num
+                +" number:"+number+" rangenum:"+rangenum+" longnum:"
+                +longnum+" rangelongnum:"+rangelongnum;
+    }
 }
