@@ -4,6 +4,9 @@ import com.jurenzhao.springbootdemo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -92,5 +95,16 @@ public class MyController {
         return "randomvalue:"+randomvalue+" uuid:"+uuid+" num:"+num
                 +" number:"+number+" rangenum:"+rangenum+" longnum:"
                 +longnum+" rangelongnum:"+rangelongnum;
+    }
+
+    @GetMapping("/{page}")
+    public String jspss(@PathVariable String page){
+        return page;
+    }
+
+    @RequestMapping("/show")
+    public String show(Model model){
+        model.addAttribute("msg","hellothymeleaf");
+        return "helloh5";
     }
 }

@@ -47,4 +47,14 @@ users:
       score: 100
     - subject: english
       score: 90
+#配置自定义静态资源位置
+spring:
+  web:
+    resources:
+      static-locations: classpath:/ceshi/,classpath:/META-INF/resources/,classpath:/templates
+
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
 
