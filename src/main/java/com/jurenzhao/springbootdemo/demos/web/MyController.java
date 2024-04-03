@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * @Author： JuRenZhao
  * @Date: 2024/3/23 12 25
@@ -105,6 +107,9 @@ public class MyController {
     @RequestMapping("/show")
     public String show(Model model){
         model.addAttribute("msg","hellothymeleaf");
+        model.addAttribute("date",new Date());
+        model.addAttribute("sex","男");
+        model.addAttribute("id",3);
         return "helloh5";
     }
 }
