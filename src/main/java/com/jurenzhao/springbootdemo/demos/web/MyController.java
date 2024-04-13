@@ -1,5 +1,6 @@
 package com.jurenzhao.springbootdemo.demos.web;
 
+import com.jurenzhao.springbootdemo.domain.Student;
 import com.jurenzhao.springbootdemo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 /**
  * @Author： JuRenZhao
@@ -105,11 +108,39 @@ public class MyController {
     }
 
     @RequestMapping("/show")
-    public String show(Model model){
+    public String show(Model model, HttpServletRequest request, HttpSession session){
         model.addAttribute("msg","hellothymeleaf");
         model.addAttribute("date",new Date());
         model.addAttribute("sex","男");
         model.addAttribute("id",3);
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("李四",22,"男"));
+        students.add(new Student("小花",18,"女"));
+        students.add(new Student("王五",33,"男"));
+        model.addAttribute("students",students);
+
+        //遍历Map
+        Map<String,Student> studentMap = new HashMap<>();
+        studentMap.put("stu1",new Student("李四",22,"男"));
+        studentMap.put("stu2",new Student("小花",18,"女"));
+        studentMap.put("stu3",new Student("王五",33,"男"));
+        model.addAttribute("studentmap",studentMap);
+
+        request.setAttribute("req","HttpServletRequest");
+        session.setAttribute("ses","HttpSession");
+        session.getServletContext().setAttribute("app","application");
+
+        model.addAttribute("id","5");
+        model.addAttribute("name","xzz");
         return "helloh5";
     }
+
+
+    @GetMapping("/show2")
+    @ResponseBody
+    public String show2(String id,String name){
+        return id+"___"+name;
+    }
+
+
 }

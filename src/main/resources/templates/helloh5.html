@@ -30,7 +30,66 @@
     <span th:case="1">1</span>
     <span th:case="2">2</span>
     <span th:case="*">*</span>
-</span>
+</span><br>
+<hr>
+<table border="1" width="50%">
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>手机号</th>
+        <th>index</th>
+        <th>count</th>
+        <th>size</th>
+        <th>是否是偶数</th>
+        <th>是否是奇数</th>
+        <th>是否是循环第一条</th>
+        <th>是否是循环最后一条</th>
+    </tr>
+    <tr th:each="stu,status :${students}">
+        <td th:text="${stu.username}"></td>
+        <td th:text="${stu.age}"></td>
+        <td th:text="${stu.sex}"></td>
+        <td th:text="${status.index}"></td>
+        <td th:text="${status.count}"></td>
+        <td th:text="${status.size}"></td>
+        <td th:text="${status.odd}"></td>
+        <td th:text="${status.even}"></td>
+        <td th:text="${status.first}"></td>
+        <td th:text="${status.last}"></td>
+    </tr>
+</table>
+<hr>
+
+<table border="1" width="50%">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+    </tr>
+    <tr th:each="stu : ${studentmap}">
+        <td th:text="${stu.getKey()}"></td>
+        <td th:text="${stu.getValue().username}"></td>
+        <td th:text="${stu.getValue().age}"></td>
+        <td th:text="${stu.getValue().getSex()}"></td>
+    </tr>
+</table>
+<hr>
+<h5>获取HttpServletRequest域中的值</h5>
+<span th:text="${#httpServletRequest.getAttribute('req')}"></span><br>
+<span th:text="${#request.getAttribute('req')}"></span><br>
+<h5>获取HttpSession域中的值</h5>
+<span th:text="${session.ses}"></span><br>
+<span th:text="${#httpSession.getAttribute('ses')}"></span><br>
+<h5>获取Application域中的值</h5>
+<span th:text="${application.app}"></span><br>
+<span th:text="${#servletContext.getAttribute('app')}"></span><br>
+
+<a th:href="@{http://www.baidu.com}">百度一下</a>
+<a th:href="@{show2?id=2&name=3}">静态资源1</a>
+<a th:href="@{show2(id=2,name=4)}">静态资源2</a>
+<a th:href="@{'show2?id='+${id}+'&name='+${name}}">动态资源1</a>
+<a th:href="@{show2(id=${id},name=${name})}">动态资源2</a>
 
 </body>
 </html>

@@ -58,3 +58,11 @@ spring:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
 
+  thymeleaf:
+    prefix: claspath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+
